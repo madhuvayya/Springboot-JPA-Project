@@ -32,7 +32,11 @@ public class TopicService {
 	}
 
 	public boolean addTopic(Topic topic) {
-		return topicsList.add(topic);
+		// return topicsList.add(topic);
+		if(topicRepository.save(topic) != null) {
+			return true;
+		}
+		return false;
 	}
 
 	public boolean updateTopic(int id, Topic topic) {
