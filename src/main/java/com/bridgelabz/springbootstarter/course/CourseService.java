@@ -19,4 +19,8 @@ public class CourseService {
 		return false;
 	}
 
+	public Course getCourse(int courseId) {
+		return courseRepository.findById(courseId).get();
+	}
+
 }

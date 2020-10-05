@@ -21,4 +21,10 @@ public class CourseController {
 		}
 		return "Failed to add Course";
 	}
+	
+	
+	@RequestMapping(value = "/topics/{topicId}/courses/{courseId}")
+	public Course getCourse(@PathVariable int courseId) {
+		return courseService.getCourse(courseId);
+	}
 }
