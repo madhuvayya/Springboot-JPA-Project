@@ -41,4 +41,12 @@ public class CourseController {
 	public List<Course> getAllCourses(@PathVariable int topicId){
 		return courseService.getAllCouses(topicId);
 	}
+	
+	@RequestMapping(value = "/topics/{topicId}/courses/{courseId}")
+	public String deleteCourse(@PathVariable int courseId) {
+		if(courseService.deleteCourse(courseId)) {
+			return "Course deleted";
+		}
+		return "Course is not deleted";
+	}
 }

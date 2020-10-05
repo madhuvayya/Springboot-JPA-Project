@@ -34,4 +34,9 @@ public class CourseService {
 		return courseRepository.findByTopicId(topicId);
 	}
 
+	public boolean deleteCourse(int courseId) {
+		courseRepository.deleteById(courseId);
+		return true;
+	}
+
 }
