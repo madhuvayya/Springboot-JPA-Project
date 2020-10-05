@@ -4,33 +4,41 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TopicService {
+	
+	@Autowired
+	private TopicRepository topicRepository;
 
-	private List<Topic> topics = new ArrayList<>(Arrays.asList(
+	private List<Topic> topicsList = new ArrayList<>(Arrays.asList(
 			new Topic(1,"Java","Most widely user backend programming language"),
 			new Topic(2,"Sql","Sql is the most idely used language to interact with database"),
 			new Topic(3,"Frontend","Html,css and Javascript")
 			));
 	
 	public List<Topic> getAllTopics(){
+		//return topicsList;
+		List<Topic> topics = new ArrayList<>();
+		topicRepository.findAll()
+						.forEach(topics::add);
 		return topics;
 	}
 
 	public Topic getTopicById(int id) {
-		return topics.stream().filter(topic -> topic.getId() == id).findAny().get();
+		return topicsList.stream().filter(topic -> topic.getId() == id).findAny().get();
 	}
 
 	public boolean addTopic(Topic topic) {
-		return topics.add(topic);
+		return topicsList.add(topic);
 	}
 
 	public boolean updateTopic(int id, Topic topic) {
-		for(int i = 0;i<topics.size(); i++ ) {
-			if( topics.get(i).getId() == id) {
-				topics.add(i, topic);
+		for(int i = 0;i<topicsList.size(); i++ ) {
+			if( topicsList.get(i).getId() == id) {
+				topicsList.add(i, topic);
 				return true;
 			}
 		}
@@ -38,9 +46,9 @@ public class TopicService {
 	}
 
 	public boolean deleteTopic(int id) {
-		for(int i = 0;i<topics.size(); i++ ) {
-			if( topics.get(i).getId() == id) {
-				topics.remove(i);
+		for(int i = 0;i<topicsList.size(); i++ ) {
+			if( topicsList.get(i).getId() == id) {
+				topicsList.remove(i);
 				return true;
 			}
 		}		
