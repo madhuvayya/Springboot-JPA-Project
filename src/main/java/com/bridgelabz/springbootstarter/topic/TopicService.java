@@ -57,13 +57,15 @@ public class TopicService {
 	}
 
 	public boolean deleteTopic(int id) {
-		for(int i = 0;i<topicsList.size(); i++ ) {
-			if( topicsList.get(i).getId() == id) {
-				topicsList.remove(i);
-				return true;
-			}
-		}		
-		return false;
+//		for(int i = 0;i<topicsList.size(); i++ ) {
+//			if( topicsList.get(i).getId() == id) {
+//				topicsList.remove(i);
+//				return true;
+//			}
+//		}
+		
+		topicRepository.deleteById(id);
+		return true;
 	}
 
 }
