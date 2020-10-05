@@ -1,5 +1,7 @@
 package com.bridgelabz.springbootstarter.course;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,5 +35,10 @@ public class CourseController {
 		if(courseService.updateCourse(course,topicId))
 			return "Course Updated";
 		return "Failed to update course";
+	}
+	
+	@RequestMapping(value = "/topics/{topicId}/courses", method = RequestMethod.GET)
+	public List<Course> getAllCourses(@PathVariable int topicId){
+		return courseService.getAllCouses(topicId);
 	}
 }

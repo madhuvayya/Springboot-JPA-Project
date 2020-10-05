@@ -1,5 +1,7 @@
 package com.bridgelabz.springbootstarter.course;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,10 @@ public class CourseService {
 	public boolean updateCourse(Course course,int topicId) {
 		course.setTopic(new Topic(topicId,"",""));
 		return courseRepository.save(course) != null;
+	}
+
+	public List<Course> getAllCouses(int topicId) {
+		return courseRepository.findByTopicId(topicId);
 	}
 
 }
