@@ -28,7 +28,8 @@ public class TopicService {
 	}
 
 	public Topic getTopicById(int id) {
-		return topicsList.stream().filter(topic -> topic.getId() == id).findAny().get();
+		//return topicsList.stream().filter(topic -> topic.getId() == id).findAny().get();
+		return topicRepository.findById(id).get();
 	}
 
 	public boolean addTopic(Topic topic) {
