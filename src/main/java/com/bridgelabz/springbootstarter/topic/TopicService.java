@@ -41,12 +41,18 @@ public class TopicService {
 	}
 
 	public boolean updateTopic(int id, Topic topic) {
-		for(int i = 0;i<topicsList.size(); i++ ) {
-			if( topicsList.get(i).getId() == id) {
-				topicsList.add(i, topic);
-				return true;
-			}
+//		for(int i = 0;i<topicsList.size(); i++ ) {
+//			if( topicsList.get(i).getId() == id) {
+//				topicsList.add(i, topic);
+//				return true;
+//			}
+//		}
+
+		// save method also update data based on id, no need to provide id   
+		if(topicRepository.save(topic) != null) {
+			return true;
 		}
+		
 		return false;
 	}
 
