@@ -23,4 +23,9 @@ public class CourseService {
 		return courseRepository.findById(courseId).get();
 	}
 
+	public boolean updateCourse(Course course,int topicId) {
+		course.setTopic(new Topic(topicId,"",""));
+		return courseRepository.save(course) != null;
+	}
+
 }

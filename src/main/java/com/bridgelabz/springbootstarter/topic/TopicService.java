@@ -13,11 +13,11 @@ public class TopicService {
 	@Autowired
 	private TopicRepository topicRepository;
 
-	private List<Topic> topicsList = new ArrayList<>(Arrays.asList(
-			new Topic(1,"Java","Most widely user backend programming language"),
-			new Topic(2,"Sql","Sql is the most idely used language to interact with database"),
-			new Topic(3,"Frontend","Html,css and Javascript")
-			));
+//	private List<Topic> topicsList = new ArrayList<>(Arrays.asList(
+//			new Topic(1,"Java","Most widely user backend programming language"),
+//			new Topic(2,"Sql","Sql is the most idely used language to interact with database"),
+//			new Topic(3,"Frontend","Html,css and Javascript")
+//			));
 	
 	public List<Topic> getAllTopics(){
 		//return topicsList;

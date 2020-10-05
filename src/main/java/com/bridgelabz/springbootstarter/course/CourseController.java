@@ -23,8 +23,15 @@ public class CourseController {
 	}
 	
 	
-	@RequestMapping(value = "/topics/{topicId}/courses/{courseId}")
+	@RequestMapping(value = "/topics/{topicId}/courses/{courseId}", method = RequestMethod.GET)
 	public Course getCourse(@PathVariable int courseId) {
 		return courseService.getCourse(courseId);
+	}
+	
+	@RequestMapping(value = "topics/{topicId}/courses/{courseId}", method = RequestMethod.PUT)
+	public String updateCourse(@RequestBody Course course,@PathVariable int topicId) {
+		if(courseService.updateCourse(course,topicId))
+			return "Course Updated";
+		return "Failed to update course";
 	}
 }
